@@ -1,7 +1,7 @@
 from django.urls import path
-from bananas.views import *
+from . import views
 
 urlpatterns = [
-    path('', IndexView.as_view(), name='Index'),
-    path('dashboard/', DashboardView.as_view(), name='Dashboard'),
+    path('', views.listLots, name='Lotes'),
+    path('dashboard/', views.dashboard, name='Dashboard'),
 ]

@@ -1,5 +1,12 @@
 from django.db import models
 
+class Lots(models.Model):
+    
+    nome_titular = models.CharField(max_length=255)
+    local = models.CharField(max_length=255)
+    hectares = models.FloatField()
+    # numero = models.FloatField()
+
 class CutOfBanana(models.Model):
     
     loteamento = models.CharField(max_length=255)

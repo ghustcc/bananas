@@ -25,3 +25,73 @@ footer {
     width: 100%;
     background: #edb500;
 }
+
+.navbar {
+    background: #edb500;
+}
+
+.division {
+    display: flex;
+    height: 1px;
+    width: 100%;
+    border-bottom: 1px dashed #000;
+    margin: 10px 0 20px 0;
+}
+
+.list-lots {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    background: #edb500;
+    border: #edb500;;
+}
+
+.add-div {
+    background-color: #1357c4;
+    cursor: pointer;
+    display: inline-block;
+    color: #fff;
+    padding: 8px;
+    border-radius: 5px;
+    margin-right: 25px;
+    margin-bottom: 10px;
+}
+
+#dialog-sair {
+    background-color: #b3140c;
+    cursor: pointer;
+    border: none;
+    display: inline-block;
+    color: #fff;
+    padding: 8px;
+    border-radius: 5px;
+    margin-right: 25px;
+    margin-bottom: 10px;
+}
+
+.buttons-dialog {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;  
+}
+
+dialog {
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.lot-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.options {
+    display: flex;
+    gap: 10px;
+}

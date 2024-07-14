@@ -1,0 +1,70 @@
+{% extends 'base.html'%}
+{% block title %}  Banana's  {% endblock %}
+{% block content %}
+{% load static %}
+
+<main>
+
+<div class="offset-1 col-10 list-div">
+    <h3>Loteamentos:</h3>
+    <div>
+        <div id="add-lot" class="col-2 add-div">
+            <i class="fas fa-plus"></i> Adicionar Lote
+        </div>
+    </div>
+
+    <dialog id="dialog-add-lot">
+        <div class="offset-1 col-10 list-div">
+            <h1>Adicione o novo loteamento:</h1>
+            <form class="forms" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="buttons-dialog">
+                    <input type="submit" class="btn btn-success" value="Criar Lote">
+                    <div id="dialog-sair">Sair</div>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+    <!-- <div class="col-9 search-div">
+        <form method="GET" id='search-form'>
+            <input class="form-control" type="text" id="search" name="search" placeholder="Pesquise por um lote..." value="{{ request.GET.search }}">
+            <i class="fa-solid fa-magnifying-glass" id="search-btn"></i>
+        </form>
+    </div> -->
+
+    <div class="division"></div>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages%}
+                <li {% if message.tags %} class="alert alert-{{message.tags}}" {% endif %}>{{message}}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <div class="list-lots">
+        {% for lot in lots %}
+            <div class="card" style="width: 18rem;">
+                <img src="{% static 'img/lote.png' %}" class="card-img-top" alt="..." style="height: 10rem; ">
+                <div class="card-body">
+                    <h5 class="card-title">Local: {{lot.local}}</h5>
+                    <p class="card-text">Titular: {{lot.nome_titular}}</p>
+                    <p class="card-text">Hectares: {{lot.hectares}}</p>
+                    <div class="lot-bottom">
+                        <a href="href=/partials/{{lot.id}}" class="btn btn-primary">Ver lote</a>
+                        <div class="options">
+                            <span><a href="/delete/{{task.id}}"><i class="fas fa-trash"></i></a></span>
+                            <span><a href="/edit/{{task.id}}"><i class="fas fa-edit"></i></a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+</main>
+
+{% endblock %}
