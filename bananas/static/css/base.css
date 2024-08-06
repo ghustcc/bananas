@@ -26,6 +26,47 @@ footer {
     background: #edb500;
 }
 
+.return {
+    color: #edb500;
+    font-size: 40px;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 999;
+}
+
+.return i {
+    color: #edb500;
+}
+
+.imagemLot {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 20px;
+}
+
+.imagemLot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.search-div {
+    display: flex;
+    width: 100%;
+}
+
+.search-form {
+    position: absolute;
+}
+
+#search-btn {
+    position: relative;
+    left: 87%;
+    bottom: 50%;
+    cursor: pointer;
+}
+
 .navbar {
     background: #edb500;
 }
@@ -42,6 +83,14 @@ footer {
     display: flex;
     justify-content: start;
     align-items: start;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.list-cuts {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
     gap: 10px;
     flex-wrap: wrap;
 }

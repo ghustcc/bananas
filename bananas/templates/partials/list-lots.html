@@ -27,12 +27,12 @@
         </div>
     </dialog>
 
-    <!-- <div class="col-9 search-div">
+    <div class="col-9 search-div">
         <form method="GET" id='search-form'>
-            <input class="form-control" type="text" id="search" name="search" placeholder="Pesquise por um lote..." value="{{ request.GET.search }}">
+            <input class="form-control" type="text" id="search" name="search" placeholder="Pesquise por um lote... " value="{{ request.GET.search }}">
             <i class="fa-solid fa-magnifying-glass" id="search-btn"></i>
         </form>
-    </div> -->
+    </div>
 
     <div class="division"></div>
 
@@ -52,11 +52,12 @@
                     <h5 class="card-title">Local: {{lot.local}}</h5>
                     <p class="card-text">Titular: {{lot.nome_titular}}</p>
                     <p class="card-text">Hectares: {{lot.hectares}}</p>
+                    <p class="card-text">Identificador: {{lot.numero}}</p>
                     <div class="lot-bottom">
-                        <a href="href=/partials/{{lot.id}}" class="btn btn-primary">Ver lote</a>
+                        <a href="/lot/{{lot.id}}" class="btn btn-primary">Ver lote</a>
                         <div class="options">
-                            <span><a href="/delete/{{task.id}}"><i class="fas fa-trash"></i></a></span>
-                            <span><a href="/edit/{{task.id}}"><i class="fas fa-edit"></i></a></span>
+                            <span><a href="/deleteLot/{{lot.id}}"><i class="fas fa-trash"></i></a></span>
+                            <span><a href="/edit/{{lot.id}}"><i class="fas fa-edit"></i></a></span>
                         </div>
                     </div>
                 </div>
@@ -66,5 +67,14 @@
 </div>
 
 </main>
+
+<script>
+    const search_btn = document.querySelector('#search-btn')
+    const search = document.querySelector('#search')
+
+    search_btn.addEventListener('click',()=>{        
+        window.location.href = `http://127.0.0.1:8000/?search=${search.value}`
+    })
+</script>
 
 {% endblock %}

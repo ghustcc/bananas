@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% block title %}{{lot.local}} | Banana's{% endblock %}
+{% block content %}
+{% load static %}
+
+<main>
+
+    <div class="return">
+        <a href="/"><i class="fa-solid fa-rotate-left"></i></a>
+    </div>
+
+    <div class="imagemLot">
+        <img src="{% static 'img/projeto.jpg' %}" alt="">
+    </div>
+    
+    <div class="offset-1 col-10 list-div">
+        <h1>Local: {{lot.local}}</h1>
+        <p>Nome: {{lot.nome_titular}}</p>
+        <p>Hectares: {{lot.hectares}}</p>
+        <p>Identificador: {{lot.numero}}</p>
+
+        <div>
+            <div id="add-lot" class="col-2 add-div">
+                <i class="fas fa-plus"></i> Adicionar Corte
+            </div>
+        </div>
+
+        <dialog id="dialog-add-lot">
+            <div class="offset-1 col-10 list-div">
+                <h1>Adicione o novo corte:</h1>
+                <form class="forms" method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="buttons-dialog">
+                        <input type="submit" class="btn btn-success" value="Adicionar">
+                        <div id="dialog-sair">Sair</div>
+                    </div>
+                </form>
+            </div>
+        </dialog>
+
+        <div class="col-9 search-div">
+            <form method="GET" id='search-form'>
+                <input class="form-control" type="text" id="search" name="search" placeholder="Ex: 2024-06-08, ano-mes-dia " value="{{ request.GET.search }}">
+                <i class="fa-solid fa-magnifying-glass" id="search-btn"></i>
+            </form>
+        </div>
+
+        <div class="division"></div>
+
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages%}
+                    <li {% if message.tags %} class="alert alert-{{message.tags}}" {% endif %}>{{message}}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+
+        <div class="list-lots">
+            {% for cut in cuts %}
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Data: {{cut.date}}</h5>
+                        <p class="card-text">ID Lote: {{cut.id_lot}}</p>
+                        <p class="card-title">Primeira: {{cut.primeira}}</p>
+                        <p class="card-title">Segunda: {{cut.segunda}}</p>
+                        <p class="card-title">Peso da Caixa: {{cut.kg_caixa}}kg</p>
+                        <p>Porcentagem: {{cut.porcentagem}}%</p>
+                        <div class="lot-bottom">
+                            <a href="/lot/{{lot.id}}" class="btn btn-primary">Preço</a>
+                            <div class="options">
+                                <span><a href="/delete/{{task.id}}"><i class="fas fa-trash"></i></a></span>
+                                <span><a href="/edit/{{task.id}}"><i class="fas fa-edit"></i></a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <input type="hidden" name="id", id="id", value="{{lot.id}}">
+
+    </div>
+</main>
+
+<script>
+    const search_btn = document.querySelector('#search-btn')
+    const search = document.querySelector('#search')
+    const id_input = document.querySelector('#id')
+
+    let id = id_input.value;
+
+    search_btn.addEventListener('click',()=>{        
+        window.location.href = `http://127.0.0.1:8000/lot/${id}?search=${search.value}`;
+    })
+</script>
+{% endblock %}

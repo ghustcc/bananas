@@ -5,23 +5,14 @@ class Lots(models.Model):
     nome_titular = models.CharField(max_length=255)
     local = models.CharField(max_length=255)
     hectares = models.FloatField()
-    # numero = models.FloatField()
+    numero = models.IntegerField()
+    img = models.ImageField(default='img/lote.png')
 
 class CutOfBanana(models.Model):
     
-    loteamento = models.CharField(max_length=255)
-    fisrt = models.IntegerField()
-    second = models.IntegerField()
-    date = models.DateField(auto_now_add=True)
-    
-    @property
-    def dia_atual(self):
-        return date.today().day
-
-    @property
-    def mes_atual(self):
-        return date.today().month
-    
-    @property
-    def ano_atual(self):
-        return date.today().year
+    id_lot = models.IntegerField(default=0)
+    primeira = models.IntegerField()
+    segunda = models.IntegerField()
+    porcentagem = models.FloatField(default=0.0)
+    kg_caixa = models.IntegerField(default=22)
+    date = models.DateField()
