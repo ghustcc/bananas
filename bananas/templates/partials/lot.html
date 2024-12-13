@@ -41,7 +41,7 @@
 
         <div class="col-9 search-div">
             <form method="GET" id='search-form'>
-                <input class="form-control" type="text" id="search" name="search" placeholder="Ex: 2024-06-08, ano-mes-dia " value="{{ request.GET.search }}">
+                <input class="form-control" type="text" id="search" name="search" placeholder="Ex: 2024-07-24, " value="{{ request.GET.search }}">
                 <i class="fa-solid fa-magnifying-glass" id="search-btn"></i>
             </form>
         </div>
@@ -66,9 +66,9 @@
                         <p class="card-title">Primeira: {{cut.primeira}}</p>
                         <p class="card-title">Segunda: {{cut.segunda}}</p>
                         <p class="card-title">Peso da Caixa: {{cut.kg_caixa}}kg</p>
+                        <p class="card-title">Preço: {{cut.preco}}kg</p>
                         <p>Porcentagem: {{cut.porcentagem}}%</p>
                         <div class="lot-bottom">
-                            <a href="/lot/{{lot.id}}" class="btn btn-primary">Preço</a>
                             <div class="options">
                                 <span><a href="/delete/{{task.id}}"><i class="fas fa-trash"></i></a></span>
                                 <span><a href="/edit/{{task.id}}"><i class="fas fa-edit"></i></a></span>
