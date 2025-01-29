@@ -14,6 +14,7 @@ class CutOfBanana(models.Model):
     primeira = models.IntegerField()
     segunda = models.IntegerField()
     preco = models.FloatField(default=0.0)
+    cotacao = models.FloatField(default=0.0)
     porcentagem = models.FloatField(default=0.0)
     kg_caixa = models.IntegerField(default=22)
     date = models.DateField()

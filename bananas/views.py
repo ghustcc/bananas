@@ -38,6 +38,14 @@ def deleteLot(request, id):
     messages.info(request, 'Lote deletado com sucesso!')
     return redirect('/')
 
+def deleteCut(request, id):
+    lot = get_object_or_404(Lots, pk=id)
+    cuts = CutOfBanana.objects.filter(id_lot=id)
+    cuts.delete()
+    lot.delete()
+    messages.info(request, 'Lote deletado com sucesso!')
+    return redirect('/')
+
 def viewLot(request, id):
     
     if request.method == 'POST':
@@ -49,11 +57,11 @@ def viewLot(request, id):
             primeira = form.cleaned_data['primeira']
             segunda = form.cleaned_data['segunda']
             kg = form.cleaned_data['kg_caixa']
-            preco = form.cleaned_data['preco']
+            cotacao = form.cleaned_data['cotacao']
             caixas_primeira_ajust = float(kg*primeira/22)
             caixas_segunda_ajust = float(kg*segunda/22)
             cutLot.porcentagem = round(100*float(primeira/(primeira+segunda)))
-            cutLot.preco = round(float(caixas_primeira_ajust*preco+caixas_segunda_ajust*preco/2))
+            cutLot.preco = round(float(caixas_primeira_ajust*cotacao+caixas_segunda_ajust*cotacao/2))
             cutLot.save()
             return redirect('/lot/'+str(id))
         else: 
