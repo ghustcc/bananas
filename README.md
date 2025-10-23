@@ -15,8 +15,11 @@ O projeto Banana's é um painel de controle onde o usuário pode fazer a gestão
     - selecionar qual loteamento deseja ver as informações → acessar o dashboard
     - dados estatísticos mensais, trimestrais, semestrais e anuais sobre a produção de cada loteamento (Charts.js ou Streamlit)
     - acesso a mapeamento via satélite de cada loteamento
-    - acesso a uma IA de perguntas e respostas, podendo responder qualquer pergunta sobre plantação e gestão de bananas
-    - conta de usuário
+    - gerencia de gastos 
+    - gerencia de ganhos e produção
+    - acesso à uma IA de perguntas e respostas, podendo responder qualquer pergunta sobre plantação e gestão de bananas
+    - contas de usuário
+        - versão para compradores de banana, não apenas para produtores
 
 ## Justificativa
 
